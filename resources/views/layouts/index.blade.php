@@ -122,25 +122,25 @@
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="#" class="menu-link">
+                        <a href="{{ url('kategori') }}" class="menu-link">
                             <i class="menu-icon tf-icons bx bxs-category"></i>
                             <div>Kategori</div>
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="#" class="menu-link">
+                        <a href="{{ url('barang') }}" class="menu-link">
                             <i class="menu-icon tf-icons bx bxs-box"></i>
                             <div>Barang</div>
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="#" class="menu-link">
+                        <a href="{{ url('gudang') }}" class="menu-link">
                             <i class="menu-icon tf-icons bx bxs-buildings"></i>
                             <div>Gudang</div>
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="#" class="menu-link">
+                        <a href="{{ url('laporan') }}" class="menu-link">
                             <i class="menu-icon tf-icons bx bxs-report"></i>
                             <div>Laporan</div>
                         </a>
@@ -153,18 +153,18 @@
                         </a>
                         <ul class="menu-sub">
                             <li class="menu-item">
-                                <a href="#" class="menu-link">
+                                <a href="{{ url('pelanggan') }}" class="menu-link">
                                     <div>Pelanggan</div>
                                 </a>
                             </li>
                             <li class="menu-item">
-                                <a href="#" class="menu-link">
+                                <a href="{{ url('supplier') }}" class="menu-link">
                                     <div>Supplier</div>
                                 </a>
                             </li>
                         </ul>
                     <li class="menu-item">
-                        <a href="#" class="menu-link">
+                        <a href="{{ url('transaksi') }}" class="menu-link">
                             <i class="menu-icon tf-icons bx bxs-dollar-circle"></i>
                             <div>Transaksi</div>
                         </a>
@@ -219,8 +219,8 @@
                                                     </div>
                                                 </div>
                                                 <div class="flex-grow-1">
-                                                    <span class="fw-semibold d-block">John Doe</span>
-                                                    <small class="text-muted">Admin</small>
+                                                    <span class="fw-semibold d-block">{{ Auth::user()->name }}</span>
+                                                    <small class="text-muted">{{ Auth::user()->email }}</small>
                                                 </div>
                                             </div>
                                         </a>
@@ -244,9 +244,14 @@
                                         <div class="dropdown-divider"></div>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item" href="auth-login-basic.html">
-                                            <i class="bx bx-power-off me-2"></i>
-                                            <span class="align-middle">Log Out</span>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                                            @csrf
+                                            <a class="dropdown-item" href="{{ route('logout') }}"
+                                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                                <i class="bx bx-power-off me-2"></i>
+                                                <span class="align-middle">Log Out</span>
+
+                                        </form>
                                         </a>
                                     </li>
                                 </ul>

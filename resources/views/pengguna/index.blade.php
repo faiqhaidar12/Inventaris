@@ -14,7 +14,10 @@
                             <th>Nama</th>
                             <th>Email</th>
                             <th>Role</th>
-                            <th>Actions</th>
+                            @if (Auth::user()->hasRole('admin') ||
+                                    auth()->user()->hasRole('gudang'))
+                                <th>Actions</th>
+                            @endif
                         </tr>
                     </thead>
                     <tbody>
@@ -27,14 +30,16 @@
                                 Faiq@gmail.com
                             </td>
                             <td style="width: "><span class="badge bg-label-primary me-1">Admin</span></td>
-                            <td style="width: 150px">
-                                <a class="btn btn-sm" href="#"><i class="bx bx-edit-alt me-1"></i> Edit</a> |
-                                <form action="" class="d-inline">
-                                    <button class="btn btn-sm" href="#"><i class="bx bx-trash me-1"></i>
-                                        Delete</button>
-                                </form>
-
-                            </td>
+                            @if (Auth::user()->hasRole('admin') ||
+                                    auth()->user()->hasRole('gudang'))
+                                <td style="width: 150px">
+                                    <a class="btn btn-sm" href="#"><i class="bx bx-edit-alt me-1"></i> Edit</a> |
+                                    <form action="" class="d-inline">
+                                        <button class="btn btn-sm" href="#"><i class="bx bx-trash me-1"></i>
+                                            Delete</button>
+                                    </form>
+                                </td>
+                            @endif
                         </tr>
                     </tbody>
                 </table>
