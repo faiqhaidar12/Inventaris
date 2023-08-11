@@ -21,26 +21,35 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td style="width: 20px">
-                                <strong>1</strong>
-                            </td>
-                            <td>Faiq</td>
-                            <td>
-                                Faiq@gmail.com
-                            </td>
-                            <td style="width: "><span class="badge bg-label-primary me-1">Admin</span></td>
-                            @if (Auth::user()->hasRole('admin') ||
-                                    auth()->user()->hasRole('gudang'))
-                                <td style="width: 150px">
-                                    <a class="btn btn-sm" href="#"><i class="bx bx-edit-alt me-1"></i> Edit</a> |
-                                    <form action="" class="d-inline">
-                                        <button class="btn btn-sm" href="#"><i class="bx bx-trash me-1"></i>
-                                            Delete</button>
-                                    </form>
+                        <?php $no = 1; ?>
+                        @foreach ($data as $item)
+                            <tr>
+                                <td style="width: 20px">
+                                    <strong>{{ $no++ }}</strong>
                                 </td>
-                            @endif
-                        </tr>
+                                <td>{{ $item->name }}</td>
+                                <td>
+                                    {{ $item->email }}
+                                </td>
+                                <td style="width: ">
+                                    @if ($item->role)
+                                        <span class="badge bg-label-primary me-1">{{ $item->role->name }}</span>
+                                    @else
+                                        <span class="badge bg-label-secondary me-1">Tidak ada peran</span>
+                                    @endif
+                                </td>
+                                @if (Auth::user()->hasRole('admin') ||
+                                        auth()->user()->hasRole('gudang'))
+                                    <td style="width: 150px">
+                                        <a class="btn btn-sm" href="#"><i class="bx bx-edit-alt me-1"></i> Edit</a> |
+                                        <form action="" class="d-inline">
+                                            <button class="btn btn-sm" href="#"><i class="bx bx-trash me-1"></i>
+                                                Delete</button>
+                                        </form>
+                                    </td>
+                                @endif
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
