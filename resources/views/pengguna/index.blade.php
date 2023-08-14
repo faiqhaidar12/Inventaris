@@ -41,9 +41,14 @@
                                 @if (Auth::user()->hasRole('admin') ||
                                         auth()->user()->hasRole('gudang'))
                                     <td style="width: 150px">
-                                        <a class="btn btn-sm" href="#"><i class="bx bx-edit-alt me-1"></i> Edit</a> |
-                                        <form action="" class="d-inline">
-                                            <button class="btn btn-sm" href="#"><i class="bx bx-trash me-1"></i>
+                                        <a class="btn btn-sm" href="{{ url('/pengguna/' . $item->id . '/edit') }}"><i
+                                                class="bx bx-edit-alt me-1"></i> Edit</a> |
+                                        <form action="{{ '/pengguna/' . $item->id }}" method="POST"
+                                            onsubmit="return confirm('Apakah Anda Yakin Ingin Hapus User?')"
+                                            class="d-inline">
+                                            @csrf
+                                            @method('DELETe')
+                                            <button class="btn btn-sm" type="submit"><i class="bx bx-trash me-1"></i>
                                                 Delete</button>
                                         </form>
                                     </td>

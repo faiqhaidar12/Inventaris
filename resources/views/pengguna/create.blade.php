@@ -6,25 +6,36 @@
         <!-- Account -->
         <hr class="my-0" />
         <div class="card-body">
-            <form id="formAccountSettings" method="POST" onsubmit="return false">
+            <form method="POST" action="/pengguna">
+                @csrf
                 <div class="row">
                     <div class="mb-3 col-md-6">
-                        <label for="nama" class="form-label">Nama</label>
-                        <input class="form-control" type="text" id="nama" name="nama" value="" autofocus />
+                        <label for="name" class="form-label">Nama</label>
+                        <input class="form-control" type="text" id="name" name="name"
+                            value="{{ Session::get('name') }}" autofocus />
                     </div>
                     <div class="mb-3 col-md-6">
                         <label for="email" class="form-label">E-mail</label>
-                        <input class="form-control" type="email" id="email" name="email" value=""
-                            placeholder="Masukan Email Anda" />
+                        <input class="form-control" type="email" id="email" name="email"
+                            value="{{ Session::get('email') }}" placeholder="Masukan Email Anda" />
                     </div>
                     <div class="mb-3 col-md-6">
-                        <label for="role" class="form-label">Role</label>
-                        <select id="role" class="select2 form-select">
-                            <option value="">--Pilih Role--</option>
-                            <option value="admin">Admin</option>
-                            <option value="staff">Staff</option>
-                            <option value="pemasok">Pemasok</option>
-                            <option value="gudang">Gudang</option>
+                        <label for="password" class="form-label">Password</label>
+                        <input class="form-control" type="password" id="password" name="password"
+                            value="{{ Session::get('password') }}" autofocus />
+                    </div>
+                    <div class="mb-3 col-md-6">
+                        <label for="password_confirmation" class="form-label">Password Konfirmasi</label>
+                        <input class="form-control" type="password" id="password_confirmation" name="password_confirmation"
+                            autofocus />
+                    </div>
+                    <div class="mb-3 col-md-6">
+                        <label for="role_id" class="form-label">Role</label>
+                        <select id="role_id" class="select2 form-select" name="role_id">
+                            <option>--Pilih Role--</option>
+                            @foreach ($roles as $role)
+                                <option value="{{ $role->id }}">{{ $role->name }}</option>
+                            @endforeach
                         </select>
                     </div>
                 </div>

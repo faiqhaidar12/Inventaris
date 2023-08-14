@@ -27,23 +27,23 @@ class AuthenticatedSessionController extends Controller
     {
         $request->authenticate();
 
-        $request->session()->regenerate();
-        if (Auth::user()->hasRole('admin')) {
-            return redirect()->to('pengguna');
-        }
+        // $request->session()->regenerate();
+        // if (Auth::user()->hasRole('admin')) {
+        //     return redirect()->to('pengguna');
+        // }
 
-        if (Auth::user()->hasRole('staff')) {
-            return redirect()->to('barang');
-        }
-        if (Auth::user()->hasRole('kasir')) {
-            return redirect()->to('barang');
-        }
-        if (Auth::user()->hasRole('gudang')) {
-            return redirect()->to('gudang');
-        }
-        if (Auth::user()->hasRole('pemasok')) {
-            return redirect()->to('dashboard');
-        }
+        // if (Auth::user()->hasRole('staff')) {
+        //     return redirect()->to('barang');
+        // }
+        // if (Auth::user()->hasRole('kasir')) {
+        //     return redirect()->to('barang');
+        // }
+        // if (Auth::user()->hasRole('gudang')) {
+        //     return redirect()->to('gudang');
+        // }
+        // if (Auth::user()->hasRole('pemasok')) {
+        //     return redirect()->to('dashboard');
+        // }
 
         return redirect()->intended(RouteServiceProvider::HOME);
     }

@@ -272,6 +272,7 @@
                                 <div class="card">
                                     <div class="card-body">
                                         <!-- Isi Content -->
+                                        @include('pesan.index')
                                         @yield('content')
                                     </div>
                                 </div>
