@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BarangController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\PenggunaController;
@@ -28,7 +29,7 @@ use Illuminate\Support\Facades\Route;
 Route::resource('/', DashboardController::class)->middleware(['auth', 'verified']);
 Route::resource('dashboard', DashboardController::class)->middleware(['auth', 'verified']);
 Route::resource('pengguna', PenggunaController::class)->middleware(['auth', 'verified', 'role:admin|staff']);
-Route::resource('barang', PenggunaController::class)->middleware(['auth', 'verified', 'role:admin|staff']);
+Route::resource('barang', BarangController::class)->middleware(['auth', 'verified', 'role:admin|staff']);
 Route::resource('kategori', KategoriController::class)->middleware(['auth', 'verified', 'role:admin']);
 Route::resource('gudang', PenggunaController::class)->middleware(['auth', 'verified', 'role_or_permission:view-reports|admin']);
 Route::resource('laporan', PenggunaController::class)->middleware(['auth', 'verified', 'role:admin']);

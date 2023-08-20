@@ -51,7 +51,6 @@
     <div class="layout-wrapper layout-content-navbar">
         <div class="layout-container">
             <!-- Menu -->
-
             <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
                 <div class="app-brand demo">
                     <a href="#" class="app-brand-link">
@@ -189,9 +188,9 @@
                         <!-- Search -->
                         <div class="navbar-nav align-items-center">
                             <div class="nav-item d-flex align-items-center">
-                                <i class="bx bx-search fs-4 lh-0"></i>
+                                {{-- <i class="bx bx-search fs-4 lh-0"></i>
                                 <input type="text" class="form-control border-0 shadow-none"
-                                    placeholder="Search..." aria-label="Search..." />
+                                    placeholder="Search..." aria-label="Search..." /> --}}
                             </div>
                         </div>
                         <!-- /Search -->
@@ -272,6 +271,7 @@
                                 <div class="card">
                                     <div class="card-body">
                                         <!-- Isi Content -->
+                                        @include('sweetalert::alert')
                                         @include('pesan.index')
                                         @yield('content')
                                     </div>

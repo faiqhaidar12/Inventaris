@@ -3,6 +3,13 @@
 @section('content')
     <!-- Bordered Table -->
     <a href="{{ url('pengguna/create') }}" class="btn btn-sm btn-primary mb-2">Tambah Pengguna</a>
+    <form action="{{ url('/pengguna') }}" method="GET">
+        <div class="input-group input-group-merge mb-2">
+            <span class="input-group-text" id="basic-addon-search31"><i class="bx bx-search"></i></span>
+            <input name="keyword" value="{{ request('keyword') }}" type="text" class="form-control" placeholder="Search..."
+                aria-label="Search..." aria-describedby="basic-addon-search31" />
+        </div>
+    </form>
     <div class="card">
         <h5 class="card-header">Bordered Table</h5>
         <div class="card-body">
@@ -59,6 +66,7 @@
                 </table>
             </div>
         </div>
+        {{ $data->links() }}
     </div>
     <!--/ Bordered Table -->
 @endsection

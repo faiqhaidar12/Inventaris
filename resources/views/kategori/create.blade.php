@@ -1,5 +1,5 @@
 @extends('layouts.index')
-@section('title', 'Edit Pengguna')
+@section('title', 'Tambah Kategori')
 @section('content')
     <div class="card mb-4">
         <h5 class="card-header">Kategori</h5>

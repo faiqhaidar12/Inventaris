@@ -17,9 +17,20 @@ class PenggunaController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data = User::all();
+        $keyword = $request->input('keyword');
+        $data = User::where(function ($query) use ($keyword) {
+            $query->where('name', 'LIKE', '%' . $keyword . '%')
+                ->orWhereHas('roles', function ($query) use ($keyword) {
+                    $query->where('name', 'LIKE', '%' . $keyword . '%');
+                })
+                ->orWhere('email', 'LIKE', '%' . $keyword . '%');
+        })
+            ->latest()
+            ->orderBy('name', 'asc')
+            ->paginate(15);
+        // $data = User::all();
         return view('pengguna.index')->with('data', $data);
     }
 
@@ -123,7 +134,7 @@ class PenggunaController extends Controller
 
         // Update role menggunakan Spatie's syncRoles
         $updatedUser->syncRoles([$request->input('role_id')]);
-        return redirect('/pengguna')->with('update', 'Berhasil Update User!');
+        return redirect('/pengguna')->with('warning', 'Berhasil Update User!');
     }
 
     /**
@@ -132,6 +143,6 @@ class PenggunaController extends Controller
     public function destroy(string $id)
     {
         User::where('id', $id)->delete();
-        return redirect('pengguna')->with('success', 'Berhasil Hapus User!');
+        return redirect('pengguna')->with('error', 'Berhasil Hapus User!');
     }
 }

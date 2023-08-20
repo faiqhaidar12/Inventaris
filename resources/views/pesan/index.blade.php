@@ -9,7 +9,7 @@
     </div>
 @endif
 
-@if (Session::get('success'))
+{{-- @if (Session::get('success'))
     <div class="alert alert-success alert-dismissible">
         <h5><i class="icon fas fa-check"></i> Alert!</h5>
         {{ Session::get('success') }}
@@ -21,4 +21,4 @@
         <h5><i class="icon fas fa-check"></i> Alert!</h5>
         {{ Session::get('update') }}
     </div>
-@endif
+@endif --}}

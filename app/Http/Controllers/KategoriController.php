@@ -11,9 +11,15 @@ class KategoriController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data = Kategori::all();
+        $keyword = $request->input('keyword');
+        $data = Kategori::where(function ($query) use ($keyword) {
+            $query->where('name', 'LIKE', '%' . $keyword . '%');
+        })
+            ->latest()
+            ->orderBy('name', 'asc')
+            ->paginate(15);
         return view('kategori.index')->with('data', $data);
     }
 
@@ -83,7 +89,7 @@ class KategoriController extends Controller
         ];
 
         Kategori::where('id', $id)->update($data);
-        return redirect('kategori')->with('update', 'Anda Berhasil Update Data');
+        return redirect('kategori')->with('warning', 'Anda Berhasil Update Data');
     }
 
     /**
@@ -92,6 +98,6 @@ class KategoriController extends Controller
     public function destroy(string $id)
     {
         Kategori::where('id', $id)->delete();
-        return redirect('kategori')->with('success', 'Berhasil Hapus Data!');
+        return redirect('kategori')->with('error', 'Berhasil Hapus Data!');
     }
 }
