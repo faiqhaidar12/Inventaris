@@ -101,7 +101,7 @@ class BarangController extends Controller
         ];
 
         Barang::create($data);
-        return redirect('barang')->with('success', 'Dara Berhasil ditambahkan!!');
+        return redirect('barang')->with('success', 'Data Berhasil ditambahkan!!');
     }
 
     /**

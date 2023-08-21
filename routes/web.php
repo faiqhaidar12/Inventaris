@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\GudangController;
+use App\Http\Controllers\GudangStokController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\PenggunaController;
 use App\Http\Controllers\ProfileController;
@@ -31,7 +33,8 @@ Route::resource('dashboard', DashboardController::class)->middleware(['auth', 'v
 Route::resource('pengguna', PenggunaController::class)->middleware(['auth', 'verified', 'role:admin|staff']);
 Route::resource('barang', BarangController::class)->middleware(['auth', 'verified', 'role:admin|staff']);
 Route::resource('kategori', KategoriController::class)->middleware(['auth', 'verified', 'role:admin']);
-Route::resource('gudang', PenggunaController::class)->middleware(['auth', 'verified', 'role_or_permission:view-reports|admin']);
+Route::resource('gudang', GudangController::class)->middleware(['auth', 'verified', 'role_or_permission:view-reports|admin']);
+Route::resource('gudangstok', GudangStokController::class)->middleware(['auth', 'verified', 'role_or_permission:view-reports|admin']);
 Route::resource('laporan', PenggunaController::class)->middleware(['auth', 'verified', 'role:admin']);
 
 Route::middleware('auth')->group(function () {

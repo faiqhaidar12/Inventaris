@@ -133,10 +133,24 @@
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="{{ url('gudang') }}" class="menu-link">
-                            <i class="menu-icon tf-icons bx bxs-buildings"></i>
-                            <div>Gudang</div>
+                        <a href="javascript:void(0);" class="menu-link menu-toggle">
+                            <i class="menu-icon tf-icons bx bxs-business"></i>
+                            <div>Warehouses</div>
                         </a>
+                        <ul class="menu-sub">
+                            <li class="menu-item">
+                                <a href="{{ url('gudang') }}" class="menu-link">
+                                    <i class="menu-icon tf-icons bx bxs-buildings"></i>
+                                    <div>Gudang</div>
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="{{ url('gudangstok') }}" class="menu-link">
+                                    <i class="menu-icon tf-icons bx bxs-building-house"></i>
+                                    <div>Gudang Stok</div>
+                                </a>
+                            </li>
+                        </ul>
                     </li>
                     <li class="menu-item">
                         <a href="{{ url('laporan') }}" class="menu-link">
@@ -144,7 +158,6 @@
                             <div>Laporan</div>
                         </a>
                     </li>
-
                     <li class="menu-item">
                         <a href="javascript:void(0);" class="menu-link menu-toggle">
                             <i class="menu-icon tf-icons bx bxs-business"></i>
@@ -162,6 +175,7 @@
                                 </a>
                             </li>
                         </ul>
+                    </li>
                     <li class="menu-item">
                         <a href="{{ url('transaksi') }}" class="menu-link">
                             <i class="menu-icon tf-icons bx bxs-dollar-circle"></i>
