@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Barang;
+use App\Models\Gudang;
+use App\Models\Kategori;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -11,7 +14,10 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return view('dashboard.index');
+        $barang = Barang::all();
+        $kategori = Kategori::all();
+        $gudang = Gudang::all();
+        return view('dashboard.index')->with('barang', $barang)->with('kategori', $kategori)->with('gudang', $gudang);
     }
 
     /**

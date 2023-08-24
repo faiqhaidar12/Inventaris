@@ -152,12 +152,12 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="menu-item">
+                    {{-- <li class="menu-item">
                         <a href="{{ url('laporan') }}" class="menu-link">
                             <i class="menu-icon tf-icons bx bxs-report"></i>
                             <div>Laporan</div>
                         </a>
-                    </li>
+                    </li> --}}
                     <li class="menu-item">
                         <a href="javascript:void(0);" class="menu-link menu-toggle">
                             <i class="menu-icon tf-icons bx bxs-business"></i>
@@ -165,22 +165,34 @@
                         </a>
                         <ul class="menu-sub">
                             <li class="menu-item">
-                                <a href="{{ url('pelanggan') }}" class="menu-link">
-                                    <div>Pelanggan</div>
+                                <a href="{{ url('customers') }}" class="menu-link">
+                                    <div>Customers</div>
                                 </a>
                             </li>
                             <li class="menu-item">
-                                <a href="{{ url('supplier') }}" class="menu-link">
+                                <a href="{{ url('suppliers') }}" class="menu-link">
                                     <div>Supplier</div>
                                 </a>
                             </li>
                         </ul>
                     </li>
                     <li class="menu-item">
-                        <a href="{{ url('transaksi') }}" class="menu-link">
-                            <i class="menu-icon tf-icons bx bxs-dollar-circle"></i>
-                            <div>Transaksi</div>
+                        <a href="javascript:void(0);" class="menu-link menu-toggle">
+                            <i class="menu-icon tf-icons bx bxs-badge-dollar"></i>
+                            <div>Menu Transaksi</div>
                         </a>
+                        <ul class="menu-sub">
+                            <li class="menu-item">
+                                <a href="{{ url('transactions') }}" class="menu-link">
+                                    <div>Transaksi</div>
+                                </a>
+                            </li>
+                            {{-- <li class="menu-item">
+                                <a href="{{ url('transactionsdetail') }}" class="menu-link">
+                                    <div>Transaksi Detail</div>
+                                </a>
+                            </li> --}}
+                        </ul>
                     </li>
                 </ul>
             </aside>
